@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Stephen Evuleocha — Financial Engineering portfolio. Flagship: Olydome, a real-time digital-asset market microstructure and risk intelligence platform." />
+  <title>Stephen Evuleocha | Financial Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-row">
+      <a class="brand" href="#top" aria-label="Home">SE<span>.</span></a>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#projects">Projects</a>
+      <a href="olydome.html">Olydome</a>
+      <a href="#research">Research</a>
+      <a href="#skills">Skills</a>
+      <a href="resume/Stephen_Evuleocha_Financial_Engineering_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="eyebrow">Financial Engineering · Quantitative Analysis · Systems</div>
+      <h1>Stephen Nikechukwu Evuleocha</h1>
+      <p class="hero-copy">Mechanical engineering training applied to quantitative finance: numerical modeling, market microstructure, risk systems, simulation, and production-oriented software.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="olydome.html">Open Olydome case study</a>
+        <a class="button secondary" href="resume/Stephen_Evuleocha_Financial_Engineering_Resume.pdf" target="_blank" rel="noopener">View resume</a>
+      </div>
+      <div class="hero-meta">
+        <span>Montréal, Québec</span>
+        <span>McGill University</span>
+        <span>Python · C++ · MATLAB · SQL</span>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="projects">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects built to prove the math and the engineering.</h2>
+        </div>
+        <p>Each project is framed as a research or systems problem, with methodology, validation, limitations, and reproducibility—not just screenshots.</p>
+      </div>
+
+      <article class="project-card flagship">
+        <div class="project-copy">
+          <div class="project-kicker">Flagship · Interactive case study</div>
+          <h3>Olydome</h3>
+          <p class="project-subtitle">Real-time digital-asset market microstructure &amp; risk intelligence platform</p>
+          <p>Event-driven ingestion, liquidity and concentration features, executable sellability, false-positive control, and realized-return evaluation. Research terminal only: quotes and simulation, never live execution or private keys.</p>
+          <div class="tag-row">
+            <span>Python</span><span>FastAPI</span><span>Redis</span><span>ClickHouse</span><span>PostgreSQL</span><span>Docker</span><span>Next.js</span>
+          </div>
+          <div class="card-actions">
+            <a class="button primary" href="olydome.html">Engine screenshots + architecture</a>
+            <a class="text-link" href="#olydome-method">Research framing →</a>
+          </div>
+        </div>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-home.png" alt="Olydome home terminal with live rates and Alpha Radar" />
+          <figcaption>Live research terminal — Alpha Radar, Early Mode, token dossiers, ops.</figcaption>
+        </figure>
+      </article>
+
+      <div class="gallery" style="margin-top:16px">
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-radar-table.png" alt="Alpha Radar ranked token table with Opportunity, Integrity, Survival grades" />
+          <figcaption>Alpha Radar v4 — ranked Opportunity / Integrity / Survival.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-early.png" alt="Early Mode ultra-new token feed" />
+          <figcaption>Early Mode — first-minutes capture, not a buy signal.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-ops.png" alt="Live ops worker heartbeats and Redis stream depth" />
+          <figcaption>Live ops — worker heartbeats, queue depth, activity feed.</figcaption>
+        </figure>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card compact">
+          <div class="project-kicker">Build next · Classical FE</div>
+          <h3>Derivatives Pricing &amp; Volatility Lab</h3>
+          <p>Black-Scholes, implied volatility, Greeks, binomial trees, Monte Carlo, finite differences, calibration, and model-error benchmarking.</p>
+          <div class="tag-row"><span>Python</span><span>Monte Carlo</span><span>PDEs</span><span>Calibration</span></div>
+        </article>
+        <article class="project-card compact">
+          <div class="project-kicker">Build next · Risk</div>
+          <h3>Multi-Asset Portfolio Risk Engine</h3>
+          <p>VaR/CVaR, covariance and factor models, PCA, stress tests, optimization, drawdown, and rolling out-of-sample evaluation.</p>
+          <div class="tag-row"><span>VaR</span><span>PCA</span><span>Optimization</span><span>Backtesting</span></div>
+        </article>
+        <article class="project-card compact">
+          <div class="project-kicker">Build next · Microstructure</div>
+          <h3>Execution &amp; Limit-Order-Book Simulator</h3>
+          <p>Market impact, spread, slippage, TWAP/VWAP, participation-rate strategies, and optimal execution under liquidity constraints.</p>
+          <div class="tag-row"><span>LOB</span><span>Slippage</span><span>Execution</span><span>Simulation</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="olydome-method">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Olydome research framing</div>
+          <h2>Turn “find a token” into testable market research.</h2>
+        </div>
+      </div>
+      <div class="method-grid">
+        <div><strong>1. Hypothesis</strong><p>Can early liquidity growth, concentration, order-flow acceleration, and exit capacity predict survival or extreme drawdown?</p></div>
+        <div><strong>2. Features</strong><p>Liquidity depth, holder concentration, transaction imbalance, unique participant growth, age, velocity, and executable sellability.</p></div>
+        <div><strong>3. Validation</strong><p>Time-split evaluation, precision/recall, calibration, realized returns after slippage, maximum drawdown, and failure-case review.</p></div>
+        <div><strong>4. Engineering</strong><p>Asynchronous ingestion, durable queues, columnar analytics, relational metadata, API delivery, observability, and reproducible experiments.</p></div>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="research">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Research direction</div>
+          <h2>Questions worth publishing.</h2>
+        </div>
+      </div>
+      <div class="research-list">
+        <div><span>01</span><div><h3>Liquidity Growth, Wallet Concentration &amp; Short-Horizon Survival</h3><p>Empirical study of whether early microstructure variables predict survival, liquidity decay, or severe drawdown in newly issued digital assets.</p></div></div>
+        <div><span>02</span><div><h3>Displayed vs. Executable Returns in Illiquid Markets</h3><p>Measure the gap between marked-to-market P&amp;L and realizable P&amp;L after slippage, depth, fees, and exit constraints.</p></div></div>
+        <div><span>03</span><div><h3>Model Confidence Under Regime Shift</h3><p>Track calibration drift and false-positive rates as market conditions change, emphasizing confidence-aware decision systems.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="skills">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Technical profile</div>
+          <h2>Quantitative foundations + systems thinking.</h2>
+        </div>
+      </div>
+      <div class="skill-grid">
+        <div><h3>Mathematics</h3><p>Calculus, linear algebra, differential equations, probability/statistics, numerical methods, optimization, simulation.</p></div>
+        <div><h3>Programming</h3><p>Python, C++, MATLAB, SQL, Bash/Linux, Git.</p></div>
+        <div><h3>Quantitative Finance</h3><p>Market microstructure, risk, portfolio concepts, derivatives foundations, time-series analysis, backtesting.</p></div>
+        <div><h3>Systems</h3><p>FastAPI, PostgreSQL, ClickHouse, Redis, Docker, asynchronous/event-driven architecture.</p></div>
+      </div>
+    </section>
+
+    <section class="section-shell section contact">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Interested in quantitative research, financial engineering, and quantitative development opportunities.</h2>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:stephen.evuleocha@mail.mcgill.ca">stephen.evuleocha@mail.mcgill.ca</a>
+        <a href="https://www.linkedin.com/in/stephen-evuleocha/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Stephen Evuleocha</span>
+    <span>Financial Engineering Portfolio · research only, no live trading</span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button type="button">Close</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+  <script src="assets/site.js"></script>
+</body>
+</html>

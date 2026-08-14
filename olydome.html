@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Olydome case study — event-driven Solana microstructure intelligence, Precision Gate, exit-quality simulation, and live engine screenshots." />
+  <title>Olydome | Stephen Evuleocha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-row">
+      <a class="brand" href="index.html">SE<span>.</span></a>
+      <span class="live-pill">RESEARCH</span>
+    </div>
+    <nav aria-label="Case study">
+      <a href="index.html">Portfolio</a>
+      <a class="active" href="olydome.html">Olydome</a>
+      <a href="#demo">Demo</a>
+      <a href="#gate">Gate</a>
+      <a href="#gallery">Screenshots</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="eyebrow">Flagship case study · 2026</div>
+      <h1>Olydome</h1>
+      <p class="hero-copy">A production-shaped research terminal for Solana token microstructure: native DEX decoding, event-driven ingestion, versioned scores, executable-exit simulation, and a conservative Precision Gate that prefers missed signals over false positives.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#demo">Watch the demo reel</a>
+        <a class="button secondary" href="index.html">Back to portfolio</a>
+      </div>
+      <div class="hero-meta">
+        <span>Python · FastAPI · Next.js</span>
+        <span>Redis Streams · PostgreSQL · ClickHouse</span>
+        <span>Docker Compose · 241 tests</span>
+      </div>
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">Problem</a>
+        <a href="#demo">Demo</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#scores">Scoring</a>
+        <a href="#gate">Precision Gate</a>
+        <a href="#safety">Safety</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+    </section>
+
+    <section class="section-shell section" id="problem">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">The research problem</div>
+          <h2>Displayed prices lie. Executable liquidity does not.</h2>
+        </div>
+        <p>Newly issued tokens on Solana look liquid on a tape and often are not. The question is not “which ticker pumps.” It is whether early microstructure — depth, concentration, unique buyers, sellability, creator behavior — can separate survivable markets from traps before a mark-to-market chart looks convincing.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><strong>ms-local</strong><p>Gate scoring is event-driven and timed with <code>perf_counter_ns</code>. Chain/RPC refresh is never claimed as nanosecond.</p></div>
+        <div class="stat-card"><strong>shadow</strong><p>Precision Gate default is shadow mode. The live ranker still drives the radar until the gate is calibrated.</p></div>
+        <div class="stat-card"><strong>0 keys</strong><p>No custody, no seed phrases, no server-side signing. Exit quotes are simulation only.</p></div>
+        <div class="stat-card"><strong>400</strong><p>Shadow window: previous model 25 signals / 4% labeled 2×. Gate: 0 HIGH_QUALITY; 302/400 already dead or ≥85% off peak.</p></div>
+      </div>
+      <div class="notice">
+        Olydome is research infrastructure. Highest rank is the best measured setup in the current window — not a promise of profit, and not a trading bot.
+      </div>
+    </section>
+
+    <section class="section-shell section" id="demo">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Engine captures</div>
+          <h2>Demo reel from the live terminal.</h2>
+        </div>
+        <p>These are real screenshots from the running Docker stack on 13 Aug 2026: Alpha Radar, Early Mode, token dossiers, Precision Gate, probability simplex, and live ops. Click any frame to enlarge.</p>
+      </div>
+
+      <div class="reel" aria-label="Auto-playing screenshot demo of Olydome">
+        <img src="assets/screenshots/olydome-home.png" alt="Home terminal and 4D signal lattice" />
+        <img src="assets/screenshots/olydome-home-radar.png" alt="Home Alpha Radar ranked feed" />
+        <img src="assets/screenshots/olydome-radar-table.png" alt="Alpha Radar Opportunity Integrity Survival table" />
+        <img src="assets/screenshots/olydome-early.png" alt="Early Mode ultra-new capture" />
+        <img src="assets/screenshots/olydome-dossier.png" alt="Token dossier for pumpcat" />
+        <img src="assets/screenshots/olydome-dossier-scores.png" alt="Opportunity risk confidence and Precision Gate" />
+        <img src="assets/screenshots/olydome-dossier-exit.png" alt="Exit quality simulation and probability simplex" />
+        <img src="assets/screenshots/olydome-ops.png" alt="Live ops heartbeats and Redis queues" />
+        <div class="reel-label">Live engine · auto-cycle · click to enlarge</div>
+      </div>
+
+      <div class="video-wrap" style="margin-top:22px">
+        <div class="eyebrow">Walkthrough · ~86s · Home → Early → dossier → Ops</div>
+        <video id="walkthrough" controls playsinline poster="assets/screenshots/olydome-radar-table.png">
+          <source src="assets/videos/olydome-walkthrough.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="architecture">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Systems</div>
+          <h2>One pipeline. No parallel backend.</h2>
+        </div>
+        <p>Discovery, enrichment, scoring, and the Precision Gate share the same workers, stores, and API. DEX Screener is enrichment only — not the discovery clock.</p>
+      </div>
+      <div class="arch-grid">
+        <div>
+          <h3>Ingest</h3>
+          <p>Helius <code>transactionSubscribe</code> primary, <code>logsSubscribe</code> backup. Native DEX decoders. Redis replay. Webhooks acknowledged fast; the worker writes ClickHouse and enriches.</p>
+        </div>
+        <div>
+          <h3>State</h3>
+          <p>PostgreSQL + Alembic for application state. ClickHouse for market snapshots. Redis Streams for webhooks, enrichment, discovery, with pending reclaim and DLQ.</p>
+        </div>
+        <div>
+          <h3>Score</h3>
+          <p>Deterministic Opportunity / Integrity / Survival, Alpha Radar v4, Early Mode wallet signals. Event-driven recompute on buy/sell/enrich — not nanosecond polling.</p>
+        </div>
+        <div>
+          <h3>Serve</h3>
+          <p>FastAPI research API. Next.js terminal: Home, Early, Alpha, FOMO holdings sync, Ops heartbeats. Docker Compose bound to <code>127.0.0.1</code> for a reliable local loop.</p>
+        </div>
+      </div>
+      <div class="mini-terminal" style="margin-top:18px">
+        <div class="terminal-bar"><i></i><i></i><i></i><span>docker-compose.yml</span></div>
+        <pre><code>postgres 16     application state + Alembic
+clickhouse 24   market_snapshots time series
+redis 7         streams, SWR cache, replay
+api / worker    FastAPI + stream_worker
+web             Next.js 15 research terminal
+
+boundary        quotes + simulation only
+                no keys · no live orders</code></pre>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="scores">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">What the terminal actually shows</div>
+          <h2>Surfaces built for evidence, not FOMO.</h2>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>Alpha Radar</h3>
+          <p>Short-horizon ranking under hard liquidity and FOMO/paid-boost gates. Letter grades on Opportunity (momentum &amp; flow), Integrity (safety &amp; concentration), Survival (liquidity durability). Investable-only vs all-ranked views. Auto-refresh ~2s.</p>
+          <h3>Early Mode</h3>
+          <p>First ~3 minutes: big-wallet and smart-wallet entries, breakout velocity, creator labels (CLEAN / HOLDER / SERIAL / RUGGER / EXITED). ULTRA NEW is 0–15 minutes. Explicitly not a buy signal.</p>
+          <h3>Token dossier</h3>
+          <p>Market tape, ClickHouse charts (never invented), factor breakdown, Safety panel, social overlay, wallet classifications, Precision Gate, and exit-quality quotes.</p>
+        </div>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-dossier-factors.png" alt="Opportunity Integrity Survival factor breakdown on a token dossier" style="height:auto;max-height:none" />
+          <figcaption>Factor transparency: buy flow, momentum, turnover, deployer risk, liquidity quality.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="gate">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Precision Gate v1 · shadow</div>
+          <h2>False positives cost more than early false negatives.</h2>
+        </div>
+        <p>Integrated into the existing intelligence engine. Strongest label is HIGH_QUALITY_SIGNAL — never BUY NOW. Default mode is shadow, so the current ranker still sorts the radar while outcomes are logged.</p>
+      </div>
+      <div class="ladder">
+        <div><b>0–15s</b><p>QUARANTINE. Too new for a confident call. Confidence is capped.</p></div>
+        <div><b>15–30s</b><p>Still young. Confidence remains capped until more tape exists.</p></div>
+        <div><b>30–60s</b><p>Needs an observed sell, an exit quote, holders, and unique buyers before promotion.</p></div>
+        <div><b>60s+</b><p>Full gate. PersistenceFilter requires ≥3 snapshots over ≥4s so a one-tick spike cannot promote.</p></div>
+      </div>
+      <h3 style="margin-top:28px">Hard rejects (selected)</h3>
+      <ul class="reject-list">
+        <li>Failed sells with no successful sell observed</li>
+        <li>Creator LP removal</li>
+        <li>Transfer restriction / honeypot-class behavior</li>
+        <li>Liquidity under $2.5k</li>
+        <li>$100 simulated exit recovering under 65%</li>
+        <li>Human top-10 concentration ≥ 50% (LP / burn / PDA excluded)</li>
+        <li>Drawdown ≥ 85% from observed peak</li>
+      </ul>
+      <div class="two-col" style="margin-top:22px">
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-dossier-scores.png" alt="Precision Gate panel in shadow mode showing QUARANTINE" />
+          <figcaption>Shadow panel on a dossier: decision, quality, risk, missing evidence.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-dossier-exit.png" alt="Exit quality simulation and tetrahedral probability simplex" />
+          <figcaption>Exit quotes never sign. Simplex states are regimes, not return probabilities.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="safety">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Boundary</div>
+          <h2>Designed so a recruiter can see the judgment, not just the charts.</h2>
+        </div>
+      </div>
+      <div class="notice safe">
+        No live trading. No private keys. No server-side signing. FOMO.family syncs a public handle and optional wallet for holdings enrichment only. LLMs may explain stored scores; they must not invent market numbers.
+      </div>
+      <div class="two-col">
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-fomo.png" alt="FOMO account sync page stating no private keys and no live trading" />
+          <figcaption>Holdings sync with an explicit no-keys contract.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-ops.png" alt="Ops page showing Helius webhooks, enrich jobs, discovery queue" />
+          <figcaption>Ops: Helius webhooks, enrich/discovery depth, live activity.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="gallery">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Full gallery</div>
+          <h2>More of the engine, as recruiters will actually see it.</h2>
+        </div>
+        <p>Click any capture for a full-size view. These are un-retouched frames from the local research stack.</p>
+      </div>
+      <div class="gallery wide">
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-home.png" alt="Olydome home with live FX/crypto rates and hypercube visualization" />
+          <figcaption>Home — always-on terminal, mint scorer, 4D signal lattice.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-radar.png" alt="Alpha page hero with SCORE control" />
+          <figcaption>Alpha — continuous short-horizon radar.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-radar-table.png" alt="Ranked Alpha Radar table" />
+          <figcaption>Radar table — grades, creator, liquidity, 5m volume.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-home-radar.png" alt="Home page radar section with ranked tokens" />
+          <figcaption>Home radar — investable pool vs ranked universe.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-early.png" alt="Early Mode filters and ultra-new tokens" />
+          <figcaption>Early Mode — quality sort, whale/smart filters, hide-scam.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-early-table.png" alt="Early radar table of ultra-new Solana tokens" />
+          <figcaption>Early table — age, mint, liquidity while scores are still gathering.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-dossier.png" alt="Token dossier header with market metrics" />
+          <figcaption>Dossier — market tape, freshness, platform warnings.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-dossier-scores.png" alt="Precision Gate QUARANTINE on token dossier" />
+          <figcaption>Precision Gate — conservative QUARANTINE when evidence is thin.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-dossier-exit.png" alt="Probability simplex and unquotable exit until reserves exist" />
+          <figcaption>Probability intelligence — tetrahedral simplex, missing-feature warnings.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-dossier-factors.png" alt="Score cards and safety panel" />
+          <figcaption>Why these scores — opportunity A / integrity C / survival C.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-fomo.png" alt="FOMO connection without private keys" />
+          <figcaption>FOMO — research sync, never execution.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/screenshots/olydome-ops.png" alt="Live ops machinery" />
+          <figcaption>Live ops — if this goes quiet, alpha goes stale.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-shell section" id="share">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">How to share this with recruiters</div>
+          <h2>Static folder. No backend required.</h2>
+        </div>
+        <p>This case study is a static site. Resume and walkthrough are included. Host only this folder — never <code>.env</code> or API keys.</p>
+      </div>
+      <div class="method-grid">
+        <div><strong>Local</strong><p>Open <code>portfolio/index.html</code> in a browser, or run <code>npx serve portfolio</code>.</p></div>
+        <div><strong>Netlify / Cloudflare</strong><p>Drag the <code>portfolio</code> folder onto Netlify Drop or Cloudflare Pages. Share the URL.</p></div>
+        <div><strong>GitHub Pages</strong><p>Copy <code>portfolio/</code> into a public repo (or <code>/docs</code>) and enable Pages. Do not publish API keys or <code>.env</code>.</p></div>
+        <div><strong>LinkedIn</strong><p>Use the case-study URL plus <a href="https://www.linkedin.com/in/stephen-evuleocha/">linkedin.com/in/stephen-evuleocha</a>.</p></div>
+      </div>
+    </section>
+
+    <section class="section-shell section contact">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Stephen Nikechukwu Evuleocha · Montréal · McGill</h2>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:stephen.evuleocha@mail.mcgill.ca">stephen.evuleocha@mail.mcgill.ca</a>
+        <a href="https://www.linkedin.com/in/stephen-evuleocha/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Full portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Olydome case study</span>
+    <span>Research terminal · no live trading · no private keys</span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button type="button">Close</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+  <script src="assets/site.js"></script>
+</body>
+</html>
